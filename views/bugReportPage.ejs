@@ -1,0 +1,37 @@
+<%- include("shared/header.ejs") %> 
+
+<div class="container py-5">
+    
+        <div class="col-md-12  m-auto text-center">
+            <div class="form-group">
+                
+            </div>
+            
+            <form action="/sendBugReport" method="POST" class="ml-5">
+                <% if (showAlert == true) { %>
+                    <div id="bugReportAlert" class="bugReportAlert text-success">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        <i class="fas fa-paper-plane"></i> Your Email Have been Sent Successfully!, Thank You for your Time!.
+                    </div>
+                <% } %>
+                
+                <p class="text-danger"><i class="fas fa-bug"></i> Have you found a Bug?!
+                </p>
+                <h4 class="btn btn-success"><i class="fas fa-check"></i> Please, Send Us an Email Descriping Your Problem!</h4>
+                
+                <div class="form-group mt-2">
+                    <textarea placeholder="Write your problem here and press Send Email!" class="form-control" name="bugDetailes" id="bugDetailes" cols="50" rows="15"></textarea>                    
+                </div>
+    
+                
+    
+        
+                <button id="sendBugReport" type="submit" class="btn btn-success w-100" style="background-color: #c7781c;"><i class="fas fa-paper-plane text-success"></i> Send Email</button>
+
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include("shared/footer.ejs") %> 
