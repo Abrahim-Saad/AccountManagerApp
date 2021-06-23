@@ -64,6 +64,7 @@ module.exports.forgotPassword = async (request, response) => {
         oldInputs: { userEmail: ""},
         emailExists: true, invalidEmail: false,
         isLoggedIn: false, profileName: '',
+        forgotPassword: true,
     })
 
 }
@@ -83,13 +84,15 @@ module.exports.logIn = async (request, response) => {
                         console.log(error);
                     }
                     else if (passwordMatches) {
-                        let hour = 3600000
-                        request.session.cookie.expires = new Date(Date.now() + hour)
-                        request.session.cookie.maxAge = hour
+                        // let hour = 3600000
+                        // let expiryDate = (userFound.expiryDate).toString()
+                        request.session.cookie.expires = new Date(Date.now() + userFound.sessionExpiry)
+                        request.session.cookie.maxAge = userFound.sessionExpiry
                         request.session.userID = userFound._id
                         request.session.userName = userFound.userName
                         request.session.userEmail = userFound.userEmail
-                        // response.render('homePage', { name: request.session.userName })
+                        request.session.expiryDate = `${userFound.sessionExpiry}`,
+                        request.session.secretKey = userFound.userSecretKey
                         response.redirect('/home')
                     } else {
                         console.log('Wrong Password');
@@ -102,7 +105,7 @@ module.exports.logIn = async (request, response) => {
                     }
                 })
 
-            } else if (userFound.isActivated == false) {
+            } else if (userFound.isActivated == false || userFound.isActivated == null) {
                 console.log("Please Activate Your Account First!");
                 response.render('emailVerficationPage', {
                     emailExists: true, invalidEmail: false,

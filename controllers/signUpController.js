@@ -62,12 +62,12 @@ module.exports.addNewAccount = async (request, response) => {
                         from: '"Password Manager" <nelin39254@gmail.com>', // sender address
                         to: request.body.userEmail, // list of receivers
                         subject: "Activate Account!", // Subject line
-                        html: `<div style="background-color: black;">
+                        html: `<div>
                                 <div >
-                                    <div style="margin: 15px;">
-                                        <h2 style="color: #c7781c; font-size: larger;"> You have just created a new Account Manger!</h2><br>
-                                        <div style="font-size: large; color: white;">
-                                            Please Click on the link to Activare your Account.<br><a style="color: green;" href="${verificationLink}"><i class="fas fa-redo"></i> Click here to Activate your Account!</a>
+                                    <div>
+                                        <h2> You have just created a new Account Manger!</h2><br>
+                                        <div>
+                                            Please Click on the link to Activate your Account.<br><a href="${verificationLink}">Click here to Activate your Account!</a>
                                         </div>
                                     </div>
                                 </div>
@@ -79,15 +79,16 @@ module.exports.addNewAccount = async (request, response) => {
                             console.log('You Have an Error: =>', error);
                         } else {
                             console.log("Email Has Been Sent");
+                            response.render('emailVerficationPage', {
+                                isLoggedIn: false, profileName: '',
+                            })
 
                         }
 
                     });
 
                     // console.log(request.body.userEmail);
-                    response.render('emailVerficationPage', {
-                        isLoggedIn: false, profileName: '',
-                    })
+                   
 
                 });
 

@@ -7,19 +7,7 @@
     </div>
 </div>
 
-<section id="searchBars" class="searchBars pt-2 mt-2 ml-5">
-    <div class="container">
-        <div class="row ml-1">
-            <div class="col-md-6">
-                <input type="text" id="searchInAllCatagroies" class="form-control mb-5 " placeholder="Search Accounts By Names...">
-            </div>
-            <div class="col-md-6">
-                <input type="text" class="form-control " id="searchInCurrentCatagory" placeholder=" Search Accounts By Email...">
-            </div>
-     
-        </div>
-    </div>
-</section>
+
 
 <!-- Add Account Modal -->
 <div class="modal fade" id="addAccount" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -179,6 +167,45 @@
     </div>
   </div>
 
+
+
+
+<!--Show Password-->
+<div class="modal fade" id="showPassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark" style="border-color: #c7781c">
+            <div class="modal-header">
+                <h5 class="modal-title text-success" id="exampleModalLabel"><i class="fas fa-lock-open"></i> Show Account Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/showPassword" method="POST">
+
+                <div class="modal-body" style="color: #c7781c; font-size: larger;">
+                    <p class="mb-2" style="color: #c7781c;">Confirm It's you by providing secret key!!</p>
+
+                    <input value="" placeholder="Enter Your Secret Key!" name="secretKey"
+                        type="password" class=" form-control" />
+
+                    <button  onclick="showPassword()" class="btn btn-success form-control mt-2">Show Password</button>
+
+                    <h4 class="text-center" hidden>
+                        <input id="showAccountPassword" value="">
+
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-secondary" data-dismiss="modal" style="background-color: #c7781c;"><i class="far fa-thumbs-up"></i> Done</a>
+                
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 <!-- ==========================Accounts=============================== -->
 

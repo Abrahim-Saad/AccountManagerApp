@@ -1,3 +1,5 @@
+
+
 function getIDtoDelete(accountID) {
     console.log(accountID);
     console.log("Get ID");
@@ -33,14 +35,6 @@ function getIDtoEditImg(accountID) {
 
 }
 
-// function getImgeInfo() {
-//     let imgePath = $('#accountImge').val();
-//     imgePath = imgePath.slice(12)
-//     document.getElementById('uploadImge').value = "You Choosed: " + imgePath
-//     console.log(imgePath);
-
-
-// }
 
 function getImgeInfoToEdit() {
     let imgePath = $('#accountImgeToEdit').val();
@@ -49,6 +43,22 @@ function getImgeInfoToEdit() {
     console.log(imgePath);
     $('#checkImge').show()
 
+
+}
+
+
+function setOldName(){
+    let oldName = document.getElementById('profileName').innerText
+    // console.log(oldName);
+    document.getElementById('accountNameToEdit').value = oldName
+
+}
+
+
+function setOldEmail(){
+    let oldName = document.getElementById('userEmail').innerText
+    // console.log(oldName);
+    document.getElementById('accountEmailToEdit').value = oldName
 
 }
 
@@ -65,10 +75,16 @@ $('#uploadImgeToEdit').click(function () {
 
 });
 
-// $('#uploadImge').click(function () {
-//     $('#accountImge').click();
+$("#secretKey").click(function () {
+    $("#keyInfo").toggle();
+});
 
-// });
+
+$("#autoLogout").click(function () {
+    $("#logoutInfo").toggle();
+});
+
+
 
 
 
@@ -98,10 +114,5 @@ $("#toggle").click(function () {
 
 })
 
-// $("#sendBugReport").click(function () {
-//     $('#bugReportAlert').show()
 
-// })
 
-// particleground(document.getElementById('body'));
-// $("#body").particleground();

@@ -11,6 +11,13 @@ app.post('/sendEmailToResetPassword', sendEmailsController.sendEmailToResetPassw
 app.post('/sendBugReport', sendEmailsController.sendBugReport)
 
 
+app.post('/sendEmailToDeleteUser', sendEmailsController.sendEmailToDeleteUser)
+
+
+app.post('/sendEmailToChangeUserEmail', sendEmailsController.sendEmailToChangeUserEmail)
+
+
+
 
 
 module.exports = app

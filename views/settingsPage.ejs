@@ -1,0 +1,224 @@
+<%- include("shared/header.ejs") %>
+
+<!-- Edit User Name -->
+    <div class="modal fade" id="editUserName" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/editUserName" method="POST">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark" style="border-color: #c7781c">
+                    <div class="modal-header">
+                        <h3 style="color:  #c7781c"><i class="fas fa-marker text-success"></i> Edit User Name</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- <input hidden id="accountIDtoEdit" name="accountIDtoEdit" value=""> -->
+                    <div class="modal-body">
+                        <input hidden type="text" name="useIDtoEditName" value="<%=userID%>">
+                        <div class="form-group mt-2">
+                            <input placeholder="Enter New User Name" id="accountNameToEdit" name="accountNameToEdit"
+                                type="text" class=" form-control" />
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal"
+                            style="background-color: #c7781c">Cancel</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Edit User Name</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+<!-- Change User Email -->
+<div class="modal fade" id="editUserEmail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form action="/sendEmailToChangeUserEmail" method="POST">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark" style="border-color: #c7781c">
+                <div class="modal-header">
+                    <h3 style="color:  #c7781c"><i class="fas fa-marker text-success"></i> Edit User Email</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- <input hidden id="accountIDtoEdit" name="accountIDtoEdit" value=""> -->
+                <div class="modal-body">
+                    <input hidden type="text" name="useIDtoEditEmail" value="<%=userID%>">
+                    <div class="form-group mt-2">
+                        <input placeholder="Enter New Email" id="accountEmailToEdit" name="newEmail"
+                            type="text" class=" form-control" />
+                    </div>
+                    
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal"
+                        style="background-color: #c7781c">Cancel</button>
+                    <button type="submit" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Change Email</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+    <!-- Edit Account Image -->
+    <div class="modal fade" id="editAccountImg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/editAccountImg" method="POST" enctype="multipart/form-data">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark" style="border-color: #c7781c">
+                    <div class="modal-header">
+                        <h3 style="color:  #c7781c"><i class="fas fa-camera text-success"></i> Edit Account Picture!
+                        </h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <input hidden id="accIDtoEditImge" name="accIDtoEditImge">
+                    <div class="modal-body">
+                        <div class="form-group mt-2 ">
+                            <input readonly placeholder="Choose Image" id="uploadImgeToEdit" name="uploadImgeToEdit"
+                                type="text" class=" form-control imge-upload" />
+
+                            <input id="accountImgeToEdit" name="accountImgeToEdit" type="file" hidden />
+                        </div>
+
+                        <div class="form-group">
+                            <button onclick="getImgeInfoToEdit()" type="button" id="uploadImage" name="uploadImage"
+                                class="form-control text-white" style="background-color: #c7781c"><i
+                                    class="fas fa-cloud-upload-alt"></i> Upload Image</button>
+                        </div>
+
+                        <div id="checkImge" style="display: none;">
+                            <div class="form-group text-success text-center">
+                                <h3><i class="fas fa-thumbs-up"></i> Image Uploaded Successfully!</h3>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal"
+                            style="background-color: #c7781c">Cancel</button>
+                        <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Save Image</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <!--Delet Account -->
+    <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark" style="border-color: #c7781c">
+                <div class="modal-header">
+                    <h5 class="modal-title text-danger" id="exampleModalLabel"><i
+                            class="fas fa-exclamation-triangle"></i> Delete Account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" style="color: #c7781c; font-size: larger;">
+                    Are You Sure You Want To Delete Your Account!!
+                </div>
+                <div class="modal-footer">
+                    <form action="/sendEmailToDeleteUser" method="POST">
+                        <input hidden type="text" name="userID" value="<%=userID%>">
+                        <input hidden type="text" name="userEmail" value="<%=userEmail%>">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt del"></i> Delete
+                            Account</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account -->
+    <div class="container">
+        <div class="row ml-4 text-center">
+            <div class="col-md-12 mb-5">
+                <div class="text-white user">
+                    <div class="account-img">
+                        <input hidden type="text" value="<%= userID %> ">
+                        <% if (userImg != '') { %>
+                            <img class="" src="<%=(userImg).slice(17) %>" alt="Account Image">
+                          
+                            <%} else { %>
+                             <img class="" src="img/avatar.png" alt="Account Image">
+ 
+                             <% } %>
+
+                        <!-- <img class="" src="img/avatar.png" alt="Account Image"> -->
+                        <div class="account-icons">
+
+                            <a class="mr-4" data-toggle="modal" data-target="#editAccountImg"><i
+                                    class="fas fa-image img-icon" onclick="getIDtoEditImg()"></i></a>
+
+
+                            <a class="" data-toggle="modal" data-target="#deleteAccount"><i
+                                    class="fas fa-trash-alt del"></i></a>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <table class="table text-white ">
+
+                        <tbody class="text-center" style="font-size: larger;">
+                            <tr>
+                                <th scope="row">User Name:</th>
+                                <td id="profileName">
+                                    <%= profileName%>
+                                </td>
+                                <td><a class="ml-3" data-toggle="modal" data-target="#editUserName"><i
+                                            class="fas fa-edit edit" onclick="setOldName()"></i></a></td>
+
+                            </tr>
+                            <tr>
+                                <th scope="row">User Email:</th>
+                                <td id="userEmail">
+                                    <%= userEmail%>
+                                </td>
+                                <td><a class="ml-3" data-toggle="modal" data-target="#editUserEmail"><i
+                                            class="fas fa-edit edit" onclick="setOldEmail()"></i></a></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td></td>
+                                <td></td>
+
+
+                            </tr>
+                            <!-- <tr>
+                            <th scope="row">User Name:</th>
+                            
+                          </tr> -->
+                        </tbody>
+                    </table>
+                    <div style="text-decoration: underline;">
+                        <a class="text-success" href="/changePassword">Change Password</a><br><br>
+                        <a class="text-danger" href="/forgotPassword">Forgot Password</a>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <%- include("shared/footer.ejs") %>

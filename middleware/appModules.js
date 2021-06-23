@@ -7,7 +7,8 @@ const multer = require('multer');
 
 const MongoDBStore = require('connect-mongodb-session')(session);
 const store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/accountMangerDB',
+  uri: 'mongodb+srv://admin:admin@accountmanagerappdb.7lw5y.mongodb.net/accountManagerAppDB',
+  // uri: 'mongodb://localhost:27017/accountManagerDB',
   collection: 'mySessions'
 });
 
@@ -67,7 +68,7 @@ app.use(require('../routes/signIn.routes'))
 app.use(require('../routes/signOut.routes'))
 app.use(require('../routes/homePage.routes'))
 app.use(require('../routes/crudOperations.routes'))
-// app.use(require('../routes/securityConfig.routes'))
+app.use(require('../routes/securityConfig.routes'))
 app.use(require('../routes/bugReport.routes'))
 app.use(require('../routes/settingsConfig.routes'))
 app.use(require('../routes/sendEmails.routes'))

@@ -23,7 +23,21 @@ userSchema = mongoose.Schema({
     isActivated: {
         type: Boolean,
         default: false,
-    }
+    },
+
+    userSecretKey: {
+        type: String,
+        required: false,
+        default: null,
+    },
+
+    sessionExpiry: {
+        type: Number,
+        required: false,
+        default: 3600000,
+    },
+
+
 })
 
 const userModel = mongoose.model('user', userSchema)

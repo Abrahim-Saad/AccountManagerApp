@@ -10,9 +10,12 @@ app.set("view engine", "ejs")
 app.use(appModules)
 
 
-mongoose.connect('mongodb://localhost:27017/accountMangerDB', { useNewUrlParser: true, useUnifiedTopology: true })
-// mongoose.connect('mongodb+srv://admin:admin@cluster0.y700p.mongodb.net/notesAppDB', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://admin:admin@accountmanagerappdb.7lw5y.mongodb.net/accountManagerAppDB', { useNewUrlParser: true, useUnifiedTopology: true })
+// mongoose.connect('mongodb://localhost:27017/accountManagerDB', { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 app.listen(availablePort || localPort, () => console.log("The Server is Up and Running!!"))
+
+
+
 

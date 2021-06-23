@@ -1,0 +1,268 @@
+<%- include("shared/header.ejs") %>
+
+
+    <!-- Edit Secret Key -->
+    <div class="modal fade" id="editSecretKey" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/editSecretKey" method="POST">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark" style="border-color: #c7781c">
+                    <div class="modal-header">
+                        <h3 style="color:  #c7781c"><i class="fas fa-marker text-success"></i> Edit Secret Key</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- <input hidden id="accountIDtoEdit" name="accountIDtoEdit" value=""> -->
+                    <div class="modal-body">
+                        <input hidden type="text" name="useIDtoEditExpiryDate" value="<%=userID%>">
+
+                        <div class="form-group">
+                            <input placeholder="Enter Old Secret Key" type="password" id="oldSecretKey"
+                                name="oldSecretKey" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Enter New Secret Key" type="password" id="newSecretKey"
+                                name="newSecretKey" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Confirm New Secret Key" type="password" id="confirmNewSecretKey"
+                                name="confirmNewSecretKey" class="form-control" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal"
+                            style="background-color: #c7781c">Cancel</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Edit Secret
+                            Key</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add Secret Key -->
+    <div class="modal fade" id="addSecretKey" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/addSecretKey" method="POST">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark" style="border-color: #c7781c">
+                    <div class="modal-header">
+                        <h3 style="color:  #c7781c"><i class="fas fa-plus text-success"></i> Add Secret Key</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- <input hidden id="IDtoEdit" name="IDtoEdit" value=""> -->
+                    <div class="modal-body">
+                        <input hidden type="text" name="useIDtoEditExpiryDate" value="<%=userID%>">
+                        <div class="form-group mt-2">
+                            <p class="text-white">Add Secret Key to Secure Your Passwords</p>
+                            <input value="" placeholder="Write Your Secret Key!"  name="secretKey"
+                                type="password" class=" form-control" />
+
+                        </div>
+
+                        <div class="form-group">
+                            <input value="" placeholder="Confirm Your Secret Key!" id="confirmSecretKey"
+                                name="confirmSecretKey" type="password" class=" form-control" />
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal"
+                            style="background-color: #c7781c">Cancel</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> Add Secret
+                            Key</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+<!--Delet Secret Key -->
+<div class="modal fade" id="deleteSecretKey" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark" style="border-color: #c7781c">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="exampleModalLabel"><i
+                        class="fas fa-exclamation-triangle"></i> Delete Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/deleteSecretKey" method="POST">
+
+                <div class="modal-body" style="color: #c7781c; font-size: larger;">
+                    <p class="mb-2 text-white">Are You Sure You Want To Delete Secret Key!!</p>
+                        <input value="" placeholder="Enter Your Secret Key!" name="secretKey"
+                            type="password" class=" form-control" />
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt del"></i> Delete Secret Key</a>
+                
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+    <!-- Edit Expiry Date -->
+    <div class="modal fade" id="editExpiryDate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/editExpiryDate" method="POST">
+            <div class="modal-dialog">
+                <div class="modal-content bg-dark" style="border-color: #c7781c">
+                    <div class="modal-header">
+                        <h3 style="color:  #c7781c"><i class="fas fa-marker text-success"></i> Edit Logout Time</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- <input hidden id="IDtoEdit" name="accountIDtoEdit" value=""> -->
+                    <div class="modal-body">
+                        <input hidden type="text" name="useIDtoEditExpiryDate" value="<%=userID%>">
+                        <div class="form-group mt-2">
+                            <p class="text-white">Enter Duration in Minutes!</p>
+                            <input value="<%=expiryDate%>" placeholder="Enter Duration in Minutes!" id="newExpiryDate"
+                                name="newExpiryDate" type="number" class=" form-control" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info" data-dismiss="modal"
+                            style="background-color: #c7781c">Cancel</button>
+                        <button type="submit" class="btn btn-success"><i class="fas fa-pencil-alt"></i> Edit
+                            Duration</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10 ml-5">
+                <table class="table text-white">
+                    <thead class="mb">
+                        <h3 class="text-white text-center"><i class="fas fa-tools"></i> Security Settings</h3>
+                        <br>
+                        <br>
+                    </thead>
+                    <tbody class="text-left" style="font-size: larger;">
+                        <tr id="secretKeyRow" class="table-row">
+                            <th scope="row"><i class="fas fa-key" style="color: #c7781c;"></i> Secret Key:</th>
+
+
+
+                            <% if (secretKey==null) { %>
+                                <td class="text-danger" style="font-size: 12px;">
+                                    <i class="fas fa-exclamation-triangle"></i> You don't have a Secret Key!
+                                </td>
+
+                                <td>
+                                    <a class="ml-3" data-toggle="modal" data-target="#addSecretKey"><i
+                                            class="fas fa-plus" style="font-size: larger;"></i></a>
+                                </td>
+                                <% } %>
+
+                                <% if (secretKey !=null) { %>
+                                    <td id="secretKey" class="text-success">
+                                        <i class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i
+                                            class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i><i
+                                            class="fas fa-asterisk"></i><i class="fas fa-asterisk"></i>
+                                    </td>
+
+                                    <td>
+                                        <a class="ml-3" data-toggle="modal" data-target="#editSecretKey"><i
+                                                class="fas fa-edit" style="font-size: larger;"></i></a>
+                                    </td>
+                                <% } %>
+
+
+
+
+                        </tr>
+                        <% if (secretKey !=null) { %>
+                        
+                            <tr class="" id="keyInfo">
+                                <td>
+
+                                </td>
+                                <td><a style="text-decoration: underline; font-size: smaller;" class="ml-3 text-danger" data-toggle="modal" data-target="#forgotSecretKey">
+                                    Forgot Secret Key</a></td>
+                                <td><a class="ml-3 text-danger" data-toggle="modal" data-target="#deleteSecretKey">
+                                    <i class="fas fa-trash-alt" style="font-size: larger;"></i></a></td>
+
+                            </tr>
+                        <% } %>
+
+                        
+
+                        <tr id="autoLogout">
+                            <th scope="row"><i class="fas fa-door-open" style="color: #c7781c;"></i> Auto Logout after:
+                            </th>
+
+                            <td id="logoutAfter" class="text-success" style="font-size: 12px;">
+                                <i class="far fa-clock"></i> You will be logged out after <%=expiryDate%> min from
+                                    logging in!
+                            </td>
+
+
+                            <td><a class="ml-3" data-toggle="modal" data-target="#editExpiryDate">
+                                    <i class="fas fa-edit" style="font-size: larger;"></i></a></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row"></th>
+                            <td></td>
+                            <td></td>
+
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+
+            </div>
+            <div class="col-md-10 ml-5">
+                <div class="info">
+                    <h4>
+                        Secret Key:
+                    </h4>
+                    <p style="color: #c7781c;">
+                        Set Secret key to Prevent any one from getting your Password, You will have to provide it to see
+                        accounts password
+
+                    </p>
+                    <br>
+                    <br>
+
+                    <h4>
+                        Auto Logout:
+                    </h4>
+
+                    <p style="color: #c7781c;">
+                        Set Time to Logout Automatically!
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include("shared/footer.ejs") %>

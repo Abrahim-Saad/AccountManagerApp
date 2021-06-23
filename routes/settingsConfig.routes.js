@@ -6,6 +6,20 @@ app.get('/settings', settingsController.settingsConfig)
 
 
 
+app.get('/deleteUser/:token', settingsController.deleteUser)
+
+
+app.get('/changeUserEmail/:token', settingsController.changeUserEmail)
+
+
+app.get('/changePassword', settingsController.changePassword)
+
+
+app.post('/editUserName', settingsController.editUserName)
+
+
+
+
 
 
 
