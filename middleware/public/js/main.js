@@ -1,5 +1,35 @@
+const socket = io();
 
 
+function getIDtoShowPassword(accountID) {
+    console.log(accountID);
+    console.log("Get ID");
+    document.getElementById('accIDtoShowPassword').value = accountID
+}
+
+function showPassword() {
+    secretKey = $('#secretKey').val()
+    accountID = $('#accIDtoShowPassword').val()
+    userID = $('#userIDtoShowPassword').val()
+    socket.emit("secretKey", { secretKey, userID, accountID });
+
+}
+
+socket.on('decryptedAccountPassword', (decryptedAccountPassword) => {
+    console.log('password recieved');
+    console.log('decryptedAccountPassword', decryptedAccountPassword);
+    document.getElementById('showAccountPassword').innerHTML = 'Account Password: ' + decryptedAccountPassword
+    $('#showPasswordDiv').show()
+})
+
+
+$(".closePassword").click(function () {
+    document.getElementById('secretKey').value = ''
+    $("#showPasswordDiv").hide();
+});
+
+
+// =================================================================================
 function getIDtoDelete(accountID) {
     console.log(accountID);
     console.log("Get ID");
@@ -45,9 +75,9 @@ function getImgeInfoToEdit() {
 
 
 }
+//====================================================================================
 
-
-function setOldName(){
+function setOldName() {
     let oldName = document.getElementById('profileName').innerText
     // console.log(oldName);
     document.getElementById('accountNameToEdit').value = oldName
@@ -55,13 +85,13 @@ function setOldName(){
 }
 
 
-function setOldEmail(){
+function setOldEmail() {
     let oldName = document.getElementById('userEmail').innerText
     // console.log(oldName);
     document.getElementById('accountEmailToEdit').value = oldName
 
 }
-
+//=======================================================
 
 
 
@@ -88,10 +118,10 @@ $("#autoLogout").click(function () {
 
 
 
-let toggler = document.getElementById("dash");
 //=======================================================================
 
 // =================================NavigationBar Toggling=================================
+let toggler = document.getElementById("dash");
 $("#toggle").click(function () {
 
     let left = $('.side-navbar').css('left');

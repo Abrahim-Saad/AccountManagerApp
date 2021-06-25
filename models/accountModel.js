@@ -17,7 +17,7 @@ accountSchema = mongoose.Schema({
     },
 
     accountPassword: {
-        type: String,
+        type: Object,
         required: true,
         
     },

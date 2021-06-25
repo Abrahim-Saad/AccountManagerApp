@@ -14,8 +14,13 @@ mongoose.connect('mongodb+srv://admin:admin@accountmanagerappdb.7lw5y.mongodb.ne
 // mongoose.connect('mongodb://localhost:27017/accountManagerDB', { useNewUrlParser: true, useUnifiedTopology: true })
 
 
-app.listen(availablePort || localPort, () => console.log("The Server is Up and Running!!"))
+// app.listen(availablePort || localPort, () => console.log("The Server is Up and Running!!"))
 
+let server = app.listen(availablePort || localPort, () => console.log("The Server is Up and Running!!"))
+
+let socketServerChannel = require('socket.io')(server)
+
+require('./controllers/socketController')(socketServerChannel)
 
 
 

@@ -18,6 +18,10 @@ app.get('/changePassword', settingsController.changePassword)
 app.post('/editUserName', settingsController.editUserName)
 
 
+app.post('/editUserImg', settingsController.editUserImg)
+
+
+
 
 
 

@@ -92,7 +92,8 @@ module.exports.logIn = async (request, response) => {
                         request.session.userName = userFound.userName
                         request.session.userEmail = userFound.userEmail
                         request.session.expiryDate = `${userFound.sessionExpiry}`,
-                        request.session.secretKey = userFound.userSecretKey
+                        request.session.secretKey = userFound.userSecretKey,
+                        request.session.userImg = userFound.userImg,
                         response.redirect('/home')
                     } else {
                         console.log('Wrong Password');

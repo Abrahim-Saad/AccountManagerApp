@@ -8,6 +8,9 @@ const sendEmailsController = require('../controllers/sendEmailsController')
 app.post('/sendEmailToResetPassword', sendEmailsController.sendEmailToResetPassword)
 
 
+app.post('/sendEmailToResetSecretKey', sendEmailsController.sendEmailToResetSecretKey)
+
+
 app.post('/sendBugReport', sendEmailsController.sendBugReport)
 
 

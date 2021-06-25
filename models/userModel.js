@@ -19,6 +19,7 @@ userSchema = mongoose.Schema({
     userImg: {
         type: String,
         required: false,
+        default: null,
     },
     isActivated: {
         type: Boolean,

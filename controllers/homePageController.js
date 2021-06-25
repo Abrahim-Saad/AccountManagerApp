@@ -9,7 +9,8 @@ module.exports.homePage = async (request, response) => {
         response.render('homePage', {
             isLoggedIn: request.session.isLoggedIn,
             profileName: request.session.userName,
-            userAccountsArray: userAccounts
+            userAccountsArray: userAccounts,
+            userID: request.session.userID,
         })
     }catch(error){
         console.log(error);

@@ -67,8 +67,8 @@
 
 
     <!-- Edit Account Image -->
-    <div class="modal fade" id="editAccountImg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form action="/editAccountImg" method="POST" enctype="multipart/form-data">
+    <div class="modal fade" id="editUserImg" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form action="/editUserImg" method="POST" enctype="multipart/form-data">
             <div class="modal-dialog">
                 <div class="modal-content bg-dark" style="border-color: #c7781c">
                     <div class="modal-header">
@@ -150,8 +150,8 @@
                 <div class="text-white user">
                     <div class="account-img">
                         <input hidden type="text" value="<%= userID %> ">
-                        <% if (userImg != '') { %>
-                            <img class="" src="<%=(userImg).slice(17) %>" alt="Account Image">
+                        <% if (userImg != null) { %>
+                            <img class="" src="<%=(userImg).slice(17)%>" alt="Account Image">
                           
                             <%} else { %>
                              <img class="" src="img/avatar.png" alt="Account Image">
@@ -161,7 +161,7 @@
                         <!-- <img class="" src="img/avatar.png" alt="Account Image"> -->
                         <div class="account-icons">
 
-                            <a class="mr-4" data-toggle="modal" data-target="#editAccountImg"><i
+                            <a class="mr-4" data-toggle="modal" data-target="#editUserImg"><i
                                     class="fas fa-image img-icon" onclick="getIDtoEditImg()"></i></a>
 
 

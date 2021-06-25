@@ -54,6 +54,46 @@ module.exports.sendEmailToResetPassword = async (request, response) => {
 
 
 
+module.exports.sendEmailToResetSecretKey = async (request, response) => {
+  randomVerficationCode = Math.floor((Math.random() * 100) + 54);
+  host = request.get('host');
+  verificationLink = "http://" + request.get('host') + "/resetSecretKey?id=" + randomVerficationCode;
+  let emailOptions = {
+    from: '"Password Manager" <nelin39254@gmail.com>', // sender address
+    to: request.body.emailToResetSecretKey, // list of receivers
+    subject: "Forgot Password!", // Subject line
+    html: `<div>
+    <div >
+        <div>
+            <h2> You Have forgotten your Secret Key!</h2><br>
+            <div>
+                Please Click on the link to Reset your Secret Key.<br><a href="${verificationLink}"> Click here to Reset your Secret Key</a>
+            </div>
+        </div>
+    </div>
+</div>`, // html body
+  }
+  await transporter.sendMail(emailOptions, (error) => {
+    if (error) {
+      console.log('You Have an Error: =>', error);
+    } else {
+      console.log("Email Has Been Sent");
+      console.log(request.body.emailToResetSecretKey);
+      response.render('emailVerficationPage', {
+        oldInputs: { userEmail: "", userPassword: "" },
+        emailExists: true, passwordCorrect: true, invalidEmail: false,
+        isLoggedIn: false, profileName: '',
+      })
+
+    }
+
+  });
+
+
+}
+
+
+
 module.exports.sendBugReport = async (request, response) => {
   // randomVerficationCode = Math.floor((Math.random() * 100) + 54);
   // host = request.get('host');
